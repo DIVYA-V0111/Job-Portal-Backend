@@ -1,0 +1,29 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+
+# Sensitive config
+src/main/resources/application.properties
+
+# IDE files
+.idea/
+.eclipse/
+.vscode/
+*.iml
+*.classpath
+*.project
+*.settings/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Upload folder (resumes)
+uploads/
+
