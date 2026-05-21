@@ -49,10 +49,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // Allow React app
-        configuration.setAllowedOrigins(List.of(
-        	    "http://localhost:3000",
-        	    "https://job-portal-frontend-divya.vercel.app"
-        	));
+        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
 
         // Allow all methods
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
