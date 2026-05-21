@@ -4,8 +4,7 @@ target/
 *.jar
 *.war
 
-# Sensitive config
-src/main/resources/application.properties
+
 
 # IDE files
 .idea/
