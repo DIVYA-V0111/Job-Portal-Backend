@@ -51,7 +51,7 @@ public class SecurityConfig {
         // Allow React app
         configuration.setAllowedOrigins(List.of(
         	    "http://localhost:3000",
-        	    "https://your-vercel-url.vercel.app"
+        	    "https://job-portal-frontend-divya.vercel.app"
         	));
 
         // Allow all methods
