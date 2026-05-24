@@ -58,7 +58,7 @@ public class SecurityConfig {
 
         configuration.setAllowedOriginPatterns(List.of(
                 "http://localhost:3000",
-                "https://job-portal-frontend-divya.vercel.app"
+                "https://job-portal-frontend-dv.vercel.app"
         ));
 
         configuration.setAllowedMethods(List.of(
