@@ -13,6 +13,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import com.example.demo.security.JwtAuthenticationFilter;
+import org.springframework.http.HttpMethod;
 import java.util.List;
 
 @Configuration
@@ -32,8 +33,10 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated()
+            	    .requestMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll()
+            	    .requestMatchers("/api/auth/**").permitAll()
+            	    .anyRequest().authenticated()
+            	
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -49,7 +52,10 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // Allow React app
-        configuration.setAllowedOrigins(List.of("http://localhost:3000"));
+        configuration.setAllowedOrigins(List.of(
+        	    "http://localhost:3000",
+        	    "https://job-portal-frontend-divya.vercel.app"
+        	));
 
         // Allow all methods
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
