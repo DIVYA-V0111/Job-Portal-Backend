@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.example.demo.util.JwtUtil;
@@ -30,11 +31,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * This method runs on EVERY request
      * It checks if the request has a valid JWT token
      */
+    
     @Override
     protected void doFilterInternal(
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
+
+        if (request.getMethod().equals("OPTIONS")) {
+            response.setStatus(HttpServletResponse.SC_OK);
+            filterChain.doFilter(request, response);
+            return;
+        }
+
+        // existing JWT logic below
         
         // 1. Extract Authorization header
         String authHeader = request.getHeader("Authorization");
